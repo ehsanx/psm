@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>FAQ about Propensity Score - 3&nbsp; Identifiability Conditions</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./extensions.html" rel="next">
+<link href="./steps.html" rel="prev">
+<link href="./cover.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<meta name="twitter:title" content="FAQ about Propensity Score - 3&nbsp; Identifiability Conditions">
+<meta name="twitter:description" content="Below we discuss the assumptions in more details.">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar docked slimcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Identifiability Conditions</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">FAQ about Propensity Score</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/ehsanx/psw" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./FAQ-about-Propensity-Score.pdf">
+            <i class="bi bi-bi-file-pdf pe-1"></i>
+          Download PDF
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./FAQ-about-Propensity-Score.epub">
+            <i class="bi bi-bi-journal pe-1"></i>
+          Download ePub
+          </a>
+        </li>
+    </ul>
+    <a href="" title="Share" id="sidebar-tool-dropdown-1" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-share"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-1">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+            <i class="bi bi-bi-twitter pe-1"></i>
+          Twitter
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+            <i class="bi bi-bi-facebook pe-1"></i>
+          Facebook
+          </a>
+        </li>
+    </ul>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./goal.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Epideliologic Research Goals</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./steps.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Steps of Propensity score Matching</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./assumptions.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Identifiability Conditions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./extensions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Extensions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#conditional-exchangeability" id="toc-conditional-exchangeability" class="nav-link active" data-scroll-target="#conditional-exchangeability"><span class="toc-section-number">3.1</span>  Conditional exchangeability</a></li>
+  <li><a href="#positivity" id="toc-positivity" class="nav-link" data-scroll-target="#positivity"><span class="toc-section-number">3.2</span>  Positivity</a></li>
+  <li><a href="#causal-consistency" id="toc-causal-consistency" class="nav-link" data-scroll-target="#causal-consistency"><span class="toc-section-number">3.3</span>  (Causal) consistency</a></li>
+  <li><a href="#no-interference" id="toc-no-interference" class="nav-link" data-scroll-target="#no-interference"><span class="toc-section-number">3.4</span>  No interference</a></li>
+  <li><a href="#models-are-correctly-specified" id="toc-models-are-correctly-specified" class="nav-link" data-scroll-target="#models-are-correctly-specified"><span class="toc-section-number">3.5</span>  Models are correctly specified</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/ehsanx/psw/edit/main/assumptions.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Identifiability Conditions</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Below we discuss the assumptions in more details.</p>
+<section id="conditional-exchangeability" class="level2 page-columns page-full" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="conditional-exchangeability"><span class="header-section-number">3.1</span> Conditional exchangeability</h2>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Total cholesterol level example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Assume a condition where doctors prescribe Rosuvastatin more often if the patient belongs to any of the following category</p>
+<ul>
+<li>White (race)</li>
+<li>Male (sex)</li>
+<li>Age (Age at least 50)</li>
+</ul>
+</div>
+</div>
+<p>Conditional exchangeability, also known as conditional ignorability or unconfoundedness, is an assumption that treatment assignment is independent of potential outcomes, given a set of measured confounders. If conditional exchangeability is satisfied, we can consider the treatment and control groups exchangeable or similar in terms of potential outcomes.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><span class="math inline">\(Y(A=1), Y(A=0) \perp A | L\)</span>: Treatment assignment is independent of the potential outcome, given L</p>
+</div></div><div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Total cholesterol level example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To achieve conditional exchangeability, we need to balance the distribution of these confounders (race, sex, and age) between the treatment and control groups.</p>
+</div>
+</div>
+<p>By doing so, we can minimize the impact of confounding variables on the treatment-outcome relationship, allowing for a more accurate estimation of the causal effect of Rosuvastatin intake on total cholesterol levels.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Real-world Data Analysis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Achieving conditional exchangeability can be challenging, especially in observational studies where treatment assignment is not randomized. General suggestions in a real-world scenario:</p>
+<ul>
+<li>To strengthen the plausibility of the conditional exchangeability assumption, researchers should carefully identify and measure all relevant confounders that might influence both the treatment assignment and the outcome. This often requires domain-specific knowledge and a thorough understanding of the causal relationships among variables.</li>
+<li>It is impossible to prove that conditional exchangeability holds in a given study. Therefore, researchers should perform sensitivity analyses to assess the robustness of their causal effect estimates to potential violations of this assumption.</li>
+<li>Researchers should be transparent about the assumptions made in their analyses, including conditional exchangeability, and clearly communicate the limitations of their study findings due to these assumptions.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="positivity" class="level2 page-columns page-full" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="positivity"><span class="header-section-number">3.2</span> Positivity</h2>
+<p>Positivity is an important assumption in the causal inference that ensures a non-zero probability of receiving each treatment level (or exposure) for every stratum of the confounding variables. In other words, it means that for every combination of the confounders, there should be at least some individuals who have received and not received the treatment.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><span class="math inline">\(0 &lt; P(A=1 | L) &lt; 1\)</span>: Subjects are eligible to receive both treatment, given L</p>
+</div></div><div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Total cholesterol level example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In the context of the association between Rosuvastatin intake and total cholesterol levels, where race, sex, and age are confounders, the positivity assumption implies that there must be people from every combination of race, sex, and age who have taken Rosuvastatin as well as those who haven’t.</p>
+<p>Assume that there are 2 race categories, 2 sex categories, and 2 age categories in the data. Then we will have a total of <span class="math inline">\(2 \times 2 \times 2\)</span> = 8 possible categories. The following 8 categories represent all possible combinations of the given race, sex, and age categories:</p>
+<ol type="1">
+<li>White, Male, Less than 50</li>
+<li>White, Male, At least 50</li>
+<li>White, Female, Less than 50</li>
+<li>White, Female, At least 50</li>
+<li>Asian, Male, Less than 50</li>
+<li>Asian, Male, At least 50</li>
+<li>Asian, Female, Less than 50</li>
+<li>Asian, Female, At least 50</li>
+</ol>
+<p>The positivity assumption implies that there should be individuals taking (<span class="math inline">\(A=1\)</span>) and not taking the treatment (<span class="math inline">\(A=0\)</span>) in each of these 8 categories.</p>
+</div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solutions and Consequences: no free lunch!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>If there are no control individuals (not receiving the treatment) for the “Asian, Male, At least 50” category, it means the positivity assumption is violated for this particular combination of confounders.</li>
+<li>If the sample size allows, we could consider combining categories, such as merging age groups or collapsing race categories, to create more balanced groups. This may help to satisfy the positivity assumption but might also result in a loss of information or reduced ability to detect specific treatment effects.</li>
+<li>The causal effect estimates obtained from the study may not be generalizable to the entire population, as the results might not be applicable to the “Asian, Male, At least 50” category. This limits the external validity of the study findings.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="causal-consistency" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="causal-consistency"><span class="header-section-number">3.3</span> (Causal) consistency</h2>
+<p>When the causal consistency assumption holds, it implies that the treatment is well-defined, and there is only one version of the treatment that can be applied to all treated individuals. This allows for a clear interpretation of the causal effect, as the treatment effect can be attributed to the specific, well-defined treatment. Violation of the causal consistency assumption occurs when there are multiple versions of the treatment, and the treatment effect is not well-defined.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Total cholesterol level example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If some patients receive 5 mg of Rosuvastatin, while others receive 10 mg or 20 mg, it would be unclear which specific version of the treatment is responsible for the observed effect on total cholesterol levels. In such cases, the causal effect estimation may be biased or difficult to interpret.</p>
+</div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solutions: Design vs Analysis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>To ensure causal consistency, researchers should carefully design their study to control the treatment version and dosage, making sure that all treated individuals receive the same version of the treatment.</li>
+<li>In cases where multiple treatment versions are present, researchers may need to modify their analysis to account for these different versions, such as by estimating separate causal effects for each dosage level or considering the treatment as a continuous variable (e.g., dose-response analysis).</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="no-interference" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="no-interference"><span class="header-section-number">3.4</span> No interference</h2>
+<p>The potential outcome for one individual is not affected by the treatment status of any other individual. This means that each individual’s treatment has no influence on the outcome of others, and the potential outcomes for a given individual are independent of the treatment assignments for other individuals.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Total cholesterol level example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If some patients in the treatment group are sharing their Rosuvastatin with control patients, the no interference assumption would be violated. This is because the treatment status of one individual is now affecting the potential outcomes of another individual, which goes against the no interference assumption. In such a scenario, the treatment effect estimation may be biased because the control group is not truly “untreated” and is receiving the treatment indirectly.</p>
+</div>
+</div>
+</section>
+<section id="models-are-correctly-specified" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="models-are-correctly-specified"><span class="header-section-number">3.5</span> Models are correctly specified</h2>
+<p>We also assume that models used to estimate (1) propensity scores and (2) analyze outcomes are <strong>accurate representations</strong> of the underlying relationships between the variables involved. Model specification not only includes adding <strong>necessary covariates</strong> (which is also relavant for conditional exchangeability or no unmeasured confounding assumption), but also that they are added in the <strong>correct functional form</strong>.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Total cholesterol level example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If there is evidence that age and sex interact in determining the probability of being prescribed to Rosuvastatin, we should include the interaction term (age × sex) in the propensity score model along with the main effects.</p>
+<p>By including the relevant interaction terms in the propensity score model, we can improve the model’s ability to accurately balance the covariates between the treatment and control groups, which in turn enhances the validity of the causal effect estimates.</p>
+</div>
+</div>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Ensuring that the identifiability assumptions hold is crucial for obtaining unbiased and meaningful causal effect estimates. When these assumptions are violated, the causal effect estimates may be <strong>biased or not identifiable</strong> at all.</li>
+<li>By <strong>providing evidence or arguments supporting the plausibility of the identifiability assumptions</strong> in the study and <strong>addressing any potential violations</strong> (via sensitility analyses), we will increase the credibility and validity of the causal inference.</li>
+<li>Merely <strong>stating the assumptions</strong> without ensuring that they hold in our data can lead to biased or misleading results and undermine the validity of the study findings.</li>
+</ul>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./steps.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Steps of Propensity score Matching</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./extensions.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Extensions</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

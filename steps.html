@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>FAQ about Propensity Score - 2&nbsp; Steps of Propensity score Matching</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./assumptions.html" rel="next">
+<link href="./goal.html" rel="prev">
+<link href="./cover.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+
+<meta name="twitter:title" content="FAQ about Propensity Score - 2&nbsp; Steps of Propensity score Matching">
+<meta name="twitter:description" content="The followings are not exhaustive lists, but meant to show different possibilities at each step.">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Steps of Propensity score Matching</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">FAQ about Propensity Score</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/ehsanx/psw" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./FAQ-about-Propensity-Score.pdf">
+            <i class="bi bi-bi-file-pdf pe-1"></i>
+          Download PDF
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./FAQ-about-Propensity-Score.epub">
+            <i class="bi bi-bi-journal pe-1"></i>
+          Download ePub
+          </a>
+        </li>
+    </ul>
+    <a href="" title="Share" id="sidebar-tool-dropdown-1" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-share"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-1">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+            <i class="bi bi-bi-twitter pe-1"></i>
+          Twitter
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+            <i class="bi bi-bi-facebook pe-1"></i>
+          Facebook
+          </a>
+        </li>
+    </ul>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./goal.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Epideliologic Research Goals</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./steps.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Steps of Propensity score Matching</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./assumptions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Identifiability Conditions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./extensions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Extensions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#step-1-propensity-score-estimation" id="toc-step-1-propensity-score-estimation" class="nav-link active" data-scroll-target="#step-1-propensity-score-estimation"><span class="toc-section-number">2.1</span>  Step 1: Propensity score estimation</a></li>
+  <li><a href="#step-2-propensity-score-matching" id="toc-step-2-propensity-score-matching" class="nav-link" data-scroll-target="#step-2-propensity-score-matching"><span class="toc-section-number">2.2</span>  Step 2: Propensity score matching</a></li>
+  <li><a href="#step-3-balance-of-propensity-score-matched-dataset" id="toc-step-3-balance-of-propensity-score-matched-dataset" class="nav-link" data-scroll-target="#step-3-balance-of-propensity-score-matched-dataset"><span class="toc-section-number">2.3</span>  Step 3: Balance of Propensity score matched dataset</a></li>
+  <li><a href="#step-4-treatment-effect-estimation-from-outcome-model" id="toc-step-4-treatment-effect-estimation-from-outcome-model" class="nav-link" data-scroll-target="#step-4-treatment-effect-estimation-from-outcome-model"><span class="toc-section-number">2.4</span>  Step 4: treatment effect estimation from outcome model</a></li>
+  <li><a href="#reporting" id="toc-reporting" class="nav-link" data-scroll-target="#reporting"><span class="toc-section-number">2.5</span>  Reporting</a></li>
+  <li><a href="#uses-of-propensity-score-matching" id="toc-uses-of-propensity-score-matching" class="nav-link" data-scroll-target="#uses-of-propensity-score-matching"><span class="toc-section-number">2.6</span>  Uses of propensity score matching</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/ehsanx/psw/edit/main/steps.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Steps of Propensity score Matching</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
+  AA((propensity score matching)) --&gt; A[(Exposure modelling &lt;br/&gt;to estimate &lt;br/&gt;propensity scores)] 
+  AA --&gt; B[(Propensity score &lt;br/&gt;Matching)]
+  AA --&gt; C[(Assess balance &lt;br/&gt;and overlap)]
+  AA --&gt; D[(Outcome &lt;br/&gt;modelling)]
+  style AA fill:#f9f,stroke:#333,stroke-width:4px
+</pre>
+<div id="mermaid-tooltip-1" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+<p>The followings are not exhaustive lists, but meant to show different possibilities at each step.</p>
+<section id="step-1-propensity-score-estimation" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="step-1-propensity-score-estimation"><span class="header-section-number">2.1</span> Step 1: Propensity score estimation</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-2">flowchart LR
+subgraph ZA[" "]
+direction LR
+  A[(Exposure &lt;br/&gt;modelling &lt;br/&gt;to&lt;br/&gt; estimate &lt;br/&gt;propensity &lt;br/&gt;scores)]  --&gt; A1(Variable selection)
+  A --&gt; A2(Model specification)
+end
+
+subgraph ZAA[" "]
+direction LR
+  A1 --&gt; A11[Consult  &lt;br/&gt;subject-area  &lt;br/&gt;experts]
+  A1 --&gt; A13[Build DAG  &lt;br/&gt;from  &lt;br/&gt;literature review]
+  A1 --&gt; A12[Analytic methods  &lt;br/&gt;to sort out  &lt;br/&gt;problematic variables-  &lt;br/&gt;collinearity]
+  A2 --&gt; A21[Add interactions]
+  A2 --&gt; A22[Add polynomial terms]
+  A2 --&gt; A23[Add complex functions  &lt;br/&gt;of one or more  &lt;br/&gt;covariates]
+  A2 --&gt; A24[Use machine learning  &lt;br/&gt;methods to identify  &lt;br/&gt;complex patterns]
+end
+
+subgraph ZAAA[" "]
+direction LR
+  A21 --&gt; A221[Unstable &lt;br/&gt;results - &lt;br/&gt;exposure &lt;br/&gt;model &lt;br/&gt;coef SEs &lt;br/&gt;are too &lt;br/&gt;large &lt;br/&gt;or infinite-&lt;br/&gt; Go back to &lt;br/&gt;Model &lt;br/&gt;specification &lt;br/&gt;step]
+  A22 --&gt; A221
+  A23 --&gt; A221
+  A24 --&gt; A221
+  A11 --&gt; A111[Carefully think &lt;br/&gt;about &lt;br/&gt;variable roles]
+  A13 --&gt; A111
+  A12 --&gt; A112[Merge covariates, &lt;br/&gt;covariate levels, &lt;br/&gt;omit some &lt;br/&gt;variables, &lt;br/&gt;find alternative and &lt;br/&gt;less problematic &lt;br/&gt;variable]
+  style A111 fill:#bbf,stroke:#f66,stroke-width:2px,color:#fff,stroke-dasharray: 5 5
+end
+
+ZA -.-&gt; ZAA -.-&gt; ZAAA
+</pre>
+<div id="mermaid-tooltip-2" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+<p>The type of variables we want to include in the propensity score modelling: this should be based on prior knowledge. Usually empirical selection of variables is discouraged. Understanding the <strong>role of each variable</strong>, e.g., effect modifier vs.&nbsp;confounder will determine the analysis strategy.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-3">flowchart LR
+  A1110[\Variable roles\] --&gt; A1111{{Select variables &lt;br/&gt;causing outcome}}
+  A1110 --&gt; A1112{{select variables &lt;br/&gt;causing both outcome &lt;br/&gt;and exposure}}
+  A1110 --&gt; A1113{{omit variables &lt;br/&gt;only causing &lt;br/&gt;exposure}}
+  A1110 --&gt; A1114{{omit variables &lt;br/&gt;in the causal &lt;br/&gt;pathway}}
+  A1110 --&gt; A1115{{omit variables &lt;br/&gt;that are effect &lt;br/&gt;of outcome}}
+  A1110 --&gt; A1116{{omit variables &lt;br/&gt;that are &lt;br/&gt;simply noise}}
+  A1110 --&gt; A1117{{add useful &lt;br/&gt;proxies}}
+  style A1110 fill:#bbf,stroke:#f66,stroke-width:2px,color:#fff,stroke-dasharray: 5 5
+</pre>
+<div id="mermaid-tooltip-3" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="step-2-propensity-score-matching" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="step-2-propensity-score-matching"><span class="header-section-number">2.2</span> Step 2: Propensity score matching</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-4">flowchart LR
+subgraph ZA[" "]
+direction LR
+  B[(Propensity &lt;br/&gt;score &lt;br/&gt;Matching)] --&gt; B1(Matching&lt;br/&gt; methods)
+  B --&gt; B2(Matching &lt;br/&gt;ratios)
+  B --&gt; B3(replacements)
+end
+
+subgraph ZAA[" "]
+direction LR
+  B1 --&gt; B11[Nearest &lt;br/&gt;neighbor]
+  B1 --&gt; B12[Caliper, &lt;br/&gt;0.2*SD of &lt;br/&gt;logit of &lt;br/&gt;propensity &lt;br/&gt;score]
+  B1 --&gt; B13[Optimal]
+  B1 --&gt; B14[Full]
+  B2 --&gt; B21[Fixed &lt;br/&gt;ratio]
+  B2 --&gt; B23[Variable &lt;br/&gt;ratio]
+  B3 --&gt; B33[With]
+  B3 --&gt; B34[Without]
+end
+
+subgraph ZAAA[" "]
+direction RL
+  B21 --&gt; B211[1:1, pair]
+  B21 --&gt; B212[1:M,&lt;br/&gt; where M&gt;1 &lt;br/&gt;can be &lt;br/&gt;any integer]
+  B1 --&gt; B0&gt;Some &lt;br/&gt;combinations &lt;br/&gt;assuming &lt;br/&gt;sample size &lt;br/&gt;do not &lt;br/&gt;reduce &lt;br/&gt;too much]
+  B2 --&gt; B0
+  B3 --&gt; B0
+end
+
+ZA -.-&gt; ZAA -.-&gt; ZAAA
+</pre>
+<div id="mermaid-tooltip-4" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="step-3-balance-of-propensity-score-matched-dataset" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="step-3-balance-of-propensity-score-matched-dataset"><span class="header-section-number">2.3</span> Step 3: Balance of Propensity score matched dataset</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-5">flowchart TD
+subgraph ZA[" "]
+direction LR
+  C[(Assess balance &lt;br/&gt;and overlap)] --&gt; C1(SMD)
+  C --&gt; C2(Variance  &lt;br/&gt;ratio)
+  C --&gt; C3(Visualization, &lt;br/&gt;overlapping histograms &lt;br/&gt;love plot, &lt;br/&gt;balance tables)
+end
+
+subgraph ZAA[" "]
+direction LR
+  C1 --&gt; C11[\Unsatisfactory balance  &lt;br/&gt;or overlap\]
+  C2 --&gt; C11
+  C3 --&gt; C11
+  C3 --&gt; C31[\Propensity scores &lt;br/&gt;too close &lt;br/&gt;to 0 or 1\]
+end
+
+subgraph ZAAA[" "]
+direction RL
+  C11 --&gt; C111[/Go back to &lt;br/&gt;Exposure modelling step\]
+  C31 --&gt; C111
+  C31 --&gt; C112[/Trimming, &lt;br/&gt;not preferred\]
+end
+
+ZA -.-&gt; ZAA -.-&gt; ZAAA
+</pre>
+<div id="mermaid-tooltip-5" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="step-4-treatment-effect-estimation-from-outcome-model" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="step-4-treatment-effect-estimation-from-outcome-model"><span class="header-section-number">2.4</span> Step 4: treatment effect estimation from outcome model</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-6">flowchart TD
+subgraph ZA[" "]
+direction LR
+  D[(Outcome &lt;br/&gt;modelling)] --&gt; D1(Crude)
+  D --&gt; D2(Adjusted)
+  D --&gt; D4(Variance &lt;br/&gt;estimation)
+end
+
+subgraph ZAA[" "]
+direction LR
+  D2 --&gt; D221[All covariates, &lt;br/&gt;preferred]
+  D2 --&gt; D222[Partial list &lt;br/&gt;of covariates]
+  D4 --&gt; D41[Cluster options]
+  D4 --&gt; D42[Bootstrap options]
+end
+
+ZA -.-&gt; ZAA
+</pre>
+<div id="mermaid-tooltip-6" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="reporting" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="reporting"><span class="header-section-number">2.5</span> Reporting</h2>
+<ul>
+<li>We should report the results and interpret the treatment effect estimates in the context of the research question and the underlying assumptions.</li>
+<li>We need to clearly communicate the limitations and potential biases in the analysis, and reporting of results from useful <strong>sensitivity analyses</strong>.</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-7">flowchart TD
+subgraph ZA[" "]
+direction LR
+  D6(Sensitivity &lt;br/&gt;Analysis &lt;br/&gt;for &lt;br/&gt;overall process) --&gt; D5(Sensitivity &lt;br/&gt;Analysis &lt;br/&gt;for unmeasured &lt;br/&gt;confounding)
+end
+
+subgraph ZAA[" "]
+direction LR
+  D5 --&gt; D51[Rosenbaum &lt;br/&gt;bounds]
+  D5 --&gt; D52[Quantitative &lt;br/&gt;bias analysis, &lt;br/&gt;E-value]
+  D6 --&gt; D62[Alternative &lt;br/&gt;matching &lt;br/&gt;algorithm]
+  D6 --&gt; D61[Alternative &lt;br/&gt;model &lt;br/&gt;specifications]
+  D6 --&gt; D63[Alternative &lt;br/&gt;missing data &lt;br/&gt;method]
+end
+
+ZA -.-&gt; ZAA
+</pre>
+<div id="mermaid-tooltip-7" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+<ul>
+<li>We should also discuss the implications of the findings for the target population and the broader scientific literature.</li>
+</ul>
+</section>
+<section id="uses-of-propensity-score-matching" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="uses-of-propensity-score-matching"><span class="header-section-number">2.6</span> Uses of propensity score matching</h2>
+<p>Other than answering causal question in observational studies, propensity score matching can be helpful in the following scenarios:</p>
+<p><strong>Covariate adjustment in randomized trials</strong>: In some cases, propensity score matching can be applied to randomized controlled trials to adjust for potential imbalances in covariates that may arise due to randomization, especially in small sample sizes. However, there is a lot of controversy regarding covariate adjustment in RCTs.</p>
+<p><strong>Subgroup analysis</strong>: Propensity score matching can be used to conduct subgroup analysis, where the goal is to explore treatment effects within specific subgroups defined by one or more covariates.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./goal.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Epideliologic Research Goals</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./assumptions.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Identifiability Conditions</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
