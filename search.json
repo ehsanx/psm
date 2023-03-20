@@ -2,9 +2,16 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "FAQ about Propensity Score",
+    "title": "Discussion about Propensity Score",
     "section": "",
     "text": "Preface\nThis is a FAQ for the propensity score matching lecture.\n\nMain reference\n\n\n\n\n\n\nReference\n\n\n\nKarim, ME (2021) “Understanding Propensity Score Matching”, URL: ehsanx.github.io/psw/\n\n\n\n\nVersion history\nMaterials were prepared for the deliveries of the following lecture:\n\n\n\n\n\n\nLecture\n\n\n\n\n‘Introduction to Causal inference’\n\nMarch 20, 2023, prepared for Guest Lecture in SPPH 500/007 (Analytical Methods in Epidemiological Research) at UBC\n\n\n\n\n\n\nComments\nFor any comments regarding this document, reach out to me."
+  },
+  {
+    "objectID": "overview.html",
+    "href": "overview.html",
+    "title": "Overview",
+    "section": "",
+    "text": "Today we will discuss overview of the lecture materials (30 mins).\n\n\nresearch goals\nSteps\n\nGeneral uses of propensity score approach\n\nassumptions\n\ncausal consistency\n\n\n\nThen we will discuss the questions received from the students (20 mins).\n\n\nextensions to automatic interaction detection\nextensions to categorical exposure\nextensions to continuous exposure\nextensions to multi-level structure\n\n\nShow some published examples from the literature (40 mins)."
   },
   {
     "objectID": "goal.html#prediction-goal",
@@ -56,13 +63,6 @@
     "text": "2.5 Reporting\n\nWe should report the results and interpret the treatment effect estimates in the context of the research question and the underlying assumptions.\nWe need to clearly communicate the limitations and potential biases in the analysis, and reporting of results from useful sensitivity analyses.\n\n\n\n\n\nflowchart TD\nsubgraph ZA[\" \"]\ndirection LR\n  D6(Sensitivity <br/>Analysis <br/>for <br/>overall process) --> D5(Sensitivity <br/>Analysis <br/>for unmeasured <br/>confounding)\nend\n\nsubgraph ZAA[\" \"]\ndirection LR\n  D5 --> D51[Rosenbaum <br/>bounds]\n  D5 --> D52[Quantitative <br/>bias analysis, <br/>E-value]\n  D6 --> D62[Alternative <br/>matching <br/>algorithm]\n  D6 --> D61[Alternative <br/>model <br/>specifications]\n  D6 --> D63[Alternative <br/>missing data <br/>method]\nend\n\nZA -.-> ZAA\n\n\n\n\n\n\n\n\n\nWe should also discuss the implications of the findings for the target population and the broader scientific literature."
   },
   {
-    "objectID": "steps.html#uses-of-propensity-score-matching",
-    "href": "steps.html#uses-of-propensity-score-matching",
-    "title": "2  Steps of Propensity score Matching",
-    "section": "2.6 Uses of propensity score matching",
-    "text": "2.6 Uses of propensity score matching\nOther than answering causal question in observational studies, propensity score matching can be helpful in the following scenarios:\nCovariate adjustment in randomized trials: In some cases, propensity score matching can be applied to randomized controlled trials to adjust for potential imbalances in covariates that may arise due to randomization, especially in small sample sizes. However, there is a lot of controversy regarding covariate adjustment in RCTs.\nSubgroup analysis: Propensity score matching can be used to conduct subgroup analysis, where the goal is to explore treatment effects within specific subgroups defined by one or more covariates."
-  },
-  {
     "objectID": "assumptions.html#conditional-exchangeability",
     "href": "assumptions.html#conditional-exchangeability",
     "title": "3  Identifiability Conditions",
@@ -98,45 +98,108 @@
     "text": "3.5 Models are correctly specified\nWe also assume that models used to estimate (1) propensity scores and (2) analyze outcomes are accurate representations of the underlying relationships between the variables involved. Model specification not only includes adding necessary covariates (which is also relavant for conditional exchangeability or no unmeasured confounding assumption), but also that they are added in the correct functional form.\n\n\n\n\n\n\nTotal cholesterol level example\n\n\n\nIf there is evidence that age and sex interact in determining the probability of being prescribed to Rosuvastatin, we should include the interaction term (age × sex) in the propensity score model along with the main effects.\nBy including the relevant interaction terms in the propensity score model, we can improve the model’s ability to accurately balance the covariates between the treatment and control groups, which in turn enhances the validity of the causal effect estimates.\n\n\n\n\n\n\n\n\nImportant\n\n\n\n\nEnsuring that the identifiability assumptions hold is crucial for obtaining unbiased and meaningful causal effect estimates. When these assumptions are violated, the causal effect estimates may be biased or not identifiable at all.\nBy providing evidence or arguments supporting the plausibility of the identifiability assumptions in the study and addressing any potential violations (via sensitility analyses), we will increase the credibility and validity of the causal inference.\nMerely stating the assumptions without ensuring that they hold in our data can lead to biased or misleading results and undermine the validity of the study findings."
   },
   {
-    "objectID": "extensions.html#gradient-boosted-models",
-    "href": "extensions.html#gradient-boosted-models",
-    "title": "4  Extensions",
-    "section": "4.1 Gradient Boosted Models",
-    "text": "4.1 Gradient Boosted Models\nGradient Boosted Models (GBM) are an ensemble technique used in machine learning. This is ensemble technique as combines multiple shallow decision trees (usually known to be weak learners) to create a more useful predictive model. It improves the overall model performance by iteratively adding these weak models that focus on correcting the errors of the previous models in the sequence. These models are very promising in a real-world data analysis scenario as they are can automatically incorporate nonlinear and interaction terms among the covariates.\nTraditional logistic regression models require manual specification of interaction terms, which can be challenging and time-consuming, especially if there are many potential interactions to consider. TWANG package in R implements GBMs to estimate propensity scores can help overcome this challenge. GBMs can automatically capture interaction effects and non-linear relationships among covariates without the need for manual specification. This ability to model interactions without explicit intervention from the analyst makes GBMs an appealing choice for propensity score estimation in complex datasets with potential interactions."
+    "objectID": "extensions.html#uses-of-propensity-score-matching",
+    "href": "extensions.html#uses-of-propensity-score-matching",
+    "title": "Extensions",
+    "section": "Uses of propensity score matching",
+    "text": "Uses of propensity score matching\n\nUsefulness\n\nbalance covariates\naddressing high-dimensional covariates\nwhen outcome is rare\nmore flexible ways to deal with modelling\nability to assess overlap\nsomewhat more intuitive\nexplicit assumptions\n\nOther than answering causal question in observational studies, propensity score matching can be helpful in the following scenarios:\nCovariate adjustment in randomized trials: In some cases, propensity score matching can be applied to randomized controlled trials to adjust for potential imbalances in covariates that may arise due to randomization (Zeng et al. 2021), especially in small sample sizes. However, there is a lot of controversy regarding covariate adjustment in RCTs.\nSubgroup analysis: Propensity score matching can be used to conduct subgroup analysis, where the goal is to explore treatment effects within specific subgroups defined by one or more covariates (Dong et al. 2020).\n\n\nLimitations\n\n\n\ntweet\n\n\n\nmultiple steps, too many choices\nless efficient\ntarget population may shift\nresidual confounding still an issue"
   },
   {
     "objectID": "extensions.html#propensity-score-weighting",
     "href": "extensions.html#propensity-score-weighting",
-    "title": "4  Extensions",
-    "section": "4.2 Propensity score weighting",
-    "text": "4.2 Propensity score weighting\n\n\n\n\nflowchart LR\n  AA((propensity score weighting)) --> A[(Exposure modelling <br/>to estimate <br/>propensity scores)] \n  AA --> B[(Converting propensity scores  <br/>to  <br/>inverse probability weights,  <br/>or IPW)]\n  AA --> C[(Assess balance <br/>and summary of IPW  <br/>in the weighted data)]\n  AA --> D[(Outcome <br/>modelling in <br/>the IPW weighted data)]\n  style AA fill:#f9f,stroke:#333,stroke-width:4px\n\n\n\n\n\n\n\n\n\nAverage Treatment Effect (ATE)\n\\[\\begin{align*}\n    IPW_i &= \\begin{cases}\n        \\frac{1}{\\text{PS}_i} & \\text{if individual } i \\text{ is treated (} A_i = 1 \\text{)} \\\\\n        \\frac{1}{1 - \\text{PS}_i} & \\text{if individual } i \\text{ is not treated (} A_i = 0 \\text{)}\n    \\end{cases}\n\\end{align*}\\]\n\n\nAverage Treatment Effect on the Treated (ATT)\n\\[\\begin{align*}\n    IPW_i &= \\begin{cases}\n        1 & \\text{if individual } i \\text{ is treated (} A_i = 1 \\text{)} \\\\\n        \\frac{\\text{PS}_i}{1 - \\text{PS}_i} & \\text{if individual } i \\text{ is not treated (} A_i = 0 \\text{)}\n    \\end{cases}\n\\end{align*}\\]"
+    "title": "Extensions",
+    "section": "Propensity score weighting",
+    "text": "Propensity score weighting\n\n\n\n\n\n\n\nflowchart LR\n  AA((propensity score weighting)) --> A[(Exposure modelling <br/>to estimate <br/>propensity scores)] \n  AA --> B[(Converting propensity scores  <br/>to  <br/>inverse probability weights,  <br/>or IPW)]\n  AA --> C[(Assess balance <br/>and summary of IPW  <br/>in the weighted data)]\n  AA --> D[(Outcome <br/>modelling in <br/>the IPW weighted data)]\n  style AA fill:#f9f,stroke:#333,stroke-width:4px\n\n\n\n\n\n\n\n\n\nAverage Treatment Effect (ATE)\n\\[\\begin{align*}\n    IPW_i &= \\begin{cases}\n        \\frac{1}{\\text{PS}_i} & \\text{if individual } i \\text{ is treated (} A_i = 1 \\text{)} \\\\\n        \\frac{1}{1 - \\text{PS}_i} & \\text{if individual } i \\text{ is not treated (} A_i = 0 \\text{)}\n    \\end{cases}\n\\end{align*}\\]\n\n\nAverage Treatment Effect on the Treated (ATT)\n\\[\\begin{align*}\n    IPW_i &= \\begin{cases}\n        1 & \\text{if individual } i \\text{ is treated (} A_i = 1 \\text{)} \\\\\n        \\frac{\\text{PS}_i}{1 - \\text{PS}_i} & \\text{if individual } i \\text{ is not treated (} A_i = 0 \\text{)}\n    \\end{cases}\n\\end{align*}\\]"
   },
   {
-    "objectID": "extensions.html#categorical-exposure",
-    "href": "extensions.html#categorical-exposure",
-    "title": "4  Extensions",
-    "section": "4.3 Categorical exposure",
-    "text": "4.3 Categorical exposure\n\n4.3.1 Alcohol and Other Drug treatment data\n\nrequire(twang)\ndata(AOD)\nhead(AOD)\n\n\n\n  \n\n\ntable(AOD$treat)\n#> \n#> community   metcbt5       scy \n#>       200       200       200\n\nHere,\n\nOutcome variable: suf12: substance use frequency at 12 month follow-up\nexposure variable: treat: possible values\n\ncommunity: traditional programs (community)\nmetcbt5: evidence-based MET/CBT-5 treatment protocol\nscy: Strengthening Communities for Youth\n\nCovariates (pre-treatment):\n\nillact: illicit activities scale\ncrimjust: criminal justice involvement\nsubprob: substance use problem scale\nsubdep: substance use dependence scale\nwhite: non-Hispanic white youth\n\n\n\n\n4.3.2 Step 1: Estimation of Propensity scores\nWe can fit vector generalized linear models (VGLMs) to fit propensity score model with our 3 category exposure variable:\n\nrequire(VGAM)\npsFormula <- \"treat ~ illact + crimjust + subprob + subdep + white\"\nps.model <- vglm(psFormula,family=multinomial, data=AOD)\nAOD$ps <- data.frame(fitted(ps.model))\n\n\nrequire(ggplot2)\nggplot(AOD, aes(x=ps[,1], fill=factor(treat))) +\n  geom_density(alpha=0.5) +\n  scale_fill_discrete(name=\"Treatment Group\") +\n  labs(title=\"Density Plot of Propensity Scores by Treatment Group\",\n       x=\"Propensity Score\",\n       y=\"Density\") +\n  theme_minimal()\n\n\n\n\n\n\n4.3.3 Step 1: Estimation of Propensity scores via GBM\n\nset.seed(1235)\nmnps.AOD.ATT <- mnps(treat ~ illact + crimjust + subprob + subdep + white, \n                 data = AOD, \n                 interaction.depth = 3,\n                 estimand = \"ATT\", \n                 treatATT = \"community\", # the treated\n                 verbose = FALSE, \n                 stop.method = \"es.mean\", \n                 n.trees = 1000)\n\n\n\n4.3.4 Step 2: IPW calculation for ATT\n\nAOD$w.ATT <- twang::get.weights(mnps.AOD.ATT, stop.method = \"es.mean\")\nsummary(AOD$w.ATT)\n#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#>  0.1494  0.7265  1.0000  0.8896  1.0000  1.8823\nby(AOD$w.ATT, AOD$treat, summary)\n#> AOD$treat: community\n#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#>       1       1       1       1       1       1 \n#> ------------------------------------------------------------ \n#> AOD$treat: metcbt5\n#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#>  0.1494  0.4939  0.7204  0.7529  0.9460  1.8386 \n#> ------------------------------------------------------------ \n#> AOD$treat: scy\n#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#>  0.3548  0.7619  0.9630  0.9159  1.0263  1.8823\n\n\n\n4.3.5 Step 3: Balance assessment in weighted data\n\ntwang::bal.table(mnps.AOD.ATT, \n                 digits = 2, \n                 collapse.to = \"covariate\")[,c(\"max.std.eff.sz\",\n                                               \"stop.method\")]\n\n\n\n  \n\n\nplot(mnps.AOD.ATT, plots = 3)\n\n\n\n\n\n\n4.3.6 Step 4: Effect estimates from weighted outcome model\n\nrequire(survey)\ndesign.mnps.ATT <- svydesign(ids=~1, weights=~w.ATT, data=AOD)\nfit <- svyglm(suf12 ~ treat, design = design.mnps.ATT)\nrequire(Publish)\npublish(fit, intercept = FALSE)\n#>  Variable     Units Coefficient        CI.95   p-value \n#>     treat community         Ref                        \n#>             metcbt5        0.20 [-0.00;0.41]   0.05129 \n#>                 scy        0.08 [-0.11;0.27]   0.41503"
+    "objectID": "extensions.html#gradient-boosted-models",
+    "href": "extensions.html#gradient-boosted-models",
+    "title": "Extensions",
+    "section": "Gradient Boosted Models",
+    "text": "Gradient Boosted Models\nGradient Boosted Models (GBM) are an ensemble technique used in machine learning. This is ensemble technique as combines multiple shallow decision trees (usually known to be weak learners) to create a more useful predictive model. It improves the overall model performance by iteratively adding these weak models that focus on correcting the errors of the previous models in the sequence. These models are very promising in a real-world data analysis scenario as they are can automatically incorporate nonlinear and interaction terms among the covariates.\nTraditional logistic regression models require manual specification of interaction terms, which can be challenging and time-consuming, especially if there are many potential interactions to consider. TWANG package in R implements GBMs to estimate propensity scores can help overcome this challenge. GBMs can automatically capture interaction effects and non-linear relationships among covariates without the need for manual specification. This ability to model interactions without explicit intervention from the analyst makes GBMs an appealing choice for propensity score estimation in complex datasets with potential interactions.\n\n\n\n\nDong, Jing, Junni L Zhang, Shuxi Zeng, and Fan Li. 2020. “Subgroup Balancing Propensity Score.” Statistical Methods in Medical Research 29 (3): 659–76.\n\n\nZeng, Shuxi, Fan Li, Rui Wang, and Fan Li. 2021. “Propensity Score Weighting for Covariate Adjustment in Randomized Clinical Trials.” Statistics in Medicine 40 (4): 842–58."
   },
   {
-    "objectID": "extensions.html#continuous-exposure",
-    "href": "extensions.html#continuous-exposure",
-    "title": "4  Extensions",
-    "section": "4.4 Continuous exposure",
-    "text": "4.4 Continuous exposure\n\nrequire(twangContinuous)\nset.seed(1235)\ndata(dat)\nsummary(dat$tss_0) # treatment\n#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#>   0.000   0.000   0.000   2.101   4.000  13.000\n\n\n4.4.1 Step 1: Estimation of Propensity scores via GBM\n\ntest.mod <- ps.cont(tss_0 ~ sfs8p_0 + sati_0 + sp_sm_0 \n                    + recov_0 + subsgrps_n + treat,\n                    data=dat,\n                    n.trees = 500,\n                    shrinkage = 0.01,\n                    interaction.depth = 3,\n                    verbose = FALSE)\ntwangContinuous::bal.table(test.mod, digits = 3)\n\n\n\n  \n\n\n\n\n\n4.4.2 Step 2: IPW calculation for ATT\n\ndat$wts <- twangContinuous::get.weights(test.mod) \nsummary(dat$wts)\n#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#> 0.04231 0.85715 0.90552 0.99339 1.05425 6.31356\nby(dat$wts, dat$tss_0, summary)\n#> dat$tss_0: 0\n#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#>  0.8552  0.8667  0.8956  0.9761  0.9388  6.3136 \n#> ------------------------------------------------------------ \n#> dat$tss_0: 0.100623880265075\n#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#>   0.861   0.861   0.861   0.861   0.861   0.861 \n#> ------------------------------------------------------------ \n#> dat$tss_0: 0.198553075924\n#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#>  0.9018  1.0325  1.1632  1.0852  1.1769  1.1907 \n#> ------------------------------------------------------------ \n#> dat$tss_0: 0.881942079939801\n#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#>   1.146   1.146   1.146   1.146   1.146   1.146 \n#> ------------------------------------------------------------ \n#> dat$tss_0: 1\n#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#>  0.9006  0.9063  0.9164  0.9831  0.9750  1.9217 \n#> ------------------------------------------------------------ \n#> dat$tss_0: 1.15786092473523\n#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#>  0.9385  0.9385  0.9385  0.9385  0.9385  0.9385 \n#> ------------------------------------------------------------ \n#> dat$tss_0: 2\n#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#>  0.9425  0.9451  0.9525  0.9652  0.9591  1.1788 \n#> ------------------------------------------------------------ \n#> dat$tss_0: 2.31413199242876\n#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#>  0.9428  0.9489  0.9550  0.9550  0.9611  0.9672 \n#> ------------------------------------------------------------ \n#> dat$tss_0: 2.32625317004906\n#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#>   1.019   1.019   1.019   1.019   1.019   1.019 \n#> ------------------------------------------------------------ \n#> dat$tss_0: 2.99706024709897\n#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#>  0.9094  0.9094  0.9094  0.9094  0.9094  0.9094 \n#> ------------------------------------------------------------ \n#> dat$tss_0: 3\n#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#>  0.9092  0.9333  0.9819  0.9876  1.0123  1.9738 \n#> ------------------------------------------------------------ \n#> dat$tss_0: 3.45322259142172\n#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#>  0.9896  0.9896  0.9896  0.9896  0.9896  0.9896 \n#> ------------------------------------------------------------ \n#> dat$tss_0: 4\n#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#>  0.8014  0.8661  1.0279  0.9941  1.0838  1.1252 \n#> ------------------------------------------------------------ \n#> dat$tss_0: 5\n#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#>  0.6471  0.8081  1.0686  0.9874  1.1393  1.2394 \n#> ------------------------------------------------------------ \n#> dat$tss_0: 6\n#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#>  0.4869  0.7553  1.1391  1.0271  1.2909  1.3806 \n#> ------------------------------------------------------------ \n#> dat$tss_0: 7\n#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#>  0.3248  0.6921  1.0986  1.0161  1.2804  1.5554 \n#> ------------------------------------------------------------ \n#> dat$tss_0: 8\n#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#>  0.2159  0.5560  0.7457  0.9648  1.4072  1.7720 \n#> ------------------------------------------------------------ \n#> dat$tss_0: 9\n#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#>  0.1377  0.4927  1.1412  1.0919  1.5641  2.0416 \n#> ------------------------------------------------------------ \n#> dat$tss_0: 10\n#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#>  0.0957  0.4447  1.1916  1.1865  1.9366  2.3789 \n#> ------------------------------------------------------------ \n#> dat$tss_0: 11\n#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#> 0.07462 0.36352 0.88760 1.21486 1.98267 2.80320 \n#> ------------------------------------------------------------ \n#> dat$tss_0: 12\n#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#> 0.04231 0.42725 0.76566 1.17997 2.14189 3.28406 \n#> ------------------------------------------------------------ \n#> dat$tss_0: 13\n#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#> 0.04522 0.35156 0.40140 0.96447 0.98744 4.02582\n\n\n\n4.4.3 Step 3: Balance assessment in weighted data\n\nbal.table(test.mod, digits = 3)\n\n\n\n  \n\n\nplot(test.mod, plots=\"es\")\n\n\n\n\n\n\n4.4.4 Step 4: Effect estimates from weighted outcome model\n\ndesign.ps <- svydesign(ids=~1, weights=~wts, data=dat) \noutcome.model <- svyglm(sfs8p_3 ~ tss_0, design = design.ps, \n                        family = gaussian())\npublish(outcome.model, intercept = FALSE, digits = 4)\n#>  Variable Units Coefficient            CI.95  p-value \n#>     tss_0            0.0026 [-0.1197;0.1249]   0.9666"
+    "objectID": "cat.html#alcohol-and-other-drug-treatment-data",
+    "href": "cat.html#alcohol-and-other-drug-treatment-data",
+    "title": "4  Categorical exposure",
+    "section": "4.1 Alcohol and Other Drug treatment data",
+    "text": "4.1 Alcohol and Other Drug treatment data\n\nrequire(twang)\ndata(AOD)\nhead(AOD)\n\n\n\n  \n\n\ntable(AOD$treat)\n#> \n#> community   metcbt5       scy \n#>       200       200       200\n\nHere,\n\nOutcome variable: suf12: substance use frequency at 12 month follow-up\nexposure variable: treat: possible values\n\ncommunity: traditional programs (community)\nmetcbt5: evidence-based MET/CBT-5 treatment protocol\nscy: Strengthening Communities for Youth\n\nCovariates (pre-treatment):\n\nillact: illicit activities scale\ncrimjust: criminal justice involvement\nsubprob: substance use problem scale\nsubdep: substance use dependence scale\nwhite: non-Hispanic white youth"
   },
   {
-    "objectID": "extensions.html#multilevel-modelling",
-    "href": "extensions.html#multilevel-modelling",
-    "title": "4  Extensions",
-    "section": "4.5 Multilevel modelling",
-    "text": "4.5 Multilevel modelling\nLi, Zaslavsky, and Landrum (2013) showed that “exploiting the multilevel structure in at least one stage can greatly reduce the bias”. They emphasize that propensity score methods offer a more robust alternative to regression adjustment, especially in complex multilevel observational data where correctly specifying the outcome model may be challenging.\n\n\n\n\nLi, Fan, Alan M Zaslavsky, and Mary Beth Landrum. 2013. “Propensity Score Weighting with Multilevel Data.” Statistics in Medicine 32 (19): 3373–87."
+    "objectID": "cat.html#step-1-estimation-of-propensity-scores",
+    "href": "cat.html#step-1-estimation-of-propensity-scores",
+    "title": "4  Categorical exposure",
+    "section": "4.2 Step 1: Estimation of Propensity scores",
+    "text": "4.2 Step 1: Estimation of Propensity scores\nWe can fit vector generalized linear models (VGLMs) to fit propensity score model with our 3 category exposure variable:\n\nrequire(VGAM)\npsFormula <- \"treat ~ illact + crimjust + subprob + subdep + white\"\nps.model <- vglm(psFormula,family=multinomial, data=AOD)\nAOD$ps <- data.frame(fitted(ps.model))\n\n\nrequire(ggplot2)\nggplot(AOD, aes(x=ps[,1], fill=factor(treat))) +\n  geom_density(alpha=0.5) +\n  scale_fill_discrete(name=\"Treatment Group\") +\n  labs(title=\"Density Plot of Propensity Scores by Treatment Group\",\n       x=\"Propensity Score\",\n       y=\"Density\") +\n  theme_minimal()"
+  },
+  {
+    "objectID": "cat.html#step-1-estimation-of-propensity-scores-via-gbm",
+    "href": "cat.html#step-1-estimation-of-propensity-scores-via-gbm",
+    "title": "4  Categorical exposure",
+    "section": "4.3 Step 1: Estimation of Propensity scores via GBM",
+    "text": "4.3 Step 1: Estimation of Propensity scores via GBM\n\nset.seed(1235)\nmnps.AOD.ATT <- mnps(treat ~ illact + crimjust + subprob + subdep + white, \n                 data = AOD, \n                 interaction.depth = 3,\n                 estimand = \"ATT\", \n                 treatATT = \"community\", # the treated\n                 verbose = FALSE, \n                 stop.method = \"es.mean\", \n                 n.trees = 1000)"
+  },
+  {
+    "objectID": "cat.html#step-2-ipw-calculation-for-att",
+    "href": "cat.html#step-2-ipw-calculation-for-att",
+    "title": "4  Categorical exposure",
+    "section": "4.4 Step 2: IPW calculation for ATT",
+    "text": "4.4 Step 2: IPW calculation for ATT\n\nAOD$w.ATT <- twang::get.weights(mnps.AOD.ATT, stop.method = \"es.mean\")\nsummary(AOD$w.ATT)\n#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#>  0.1494  0.7265  1.0000  0.8896  1.0000  1.8823\nby(AOD$w.ATT, AOD$treat, summary)\n#> AOD$treat: community\n#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#>       1       1       1       1       1       1 \n#> ------------------------------------------------------------ \n#> AOD$treat: metcbt5\n#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#>  0.1494  0.4939  0.7204  0.7529  0.9460  1.8386 \n#> ------------------------------------------------------------ \n#> AOD$treat: scy\n#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#>  0.3548  0.7619  0.9630  0.9159  1.0263  1.8823"
+  },
+  {
+    "objectID": "cat.html#step-3-balance-assessment-in-weighted-data",
+    "href": "cat.html#step-3-balance-assessment-in-weighted-data",
+    "title": "4  Categorical exposure",
+    "section": "4.5 Step 3: Balance assessment in weighted data",
+    "text": "4.5 Step 3: Balance assessment in weighted data\n\n\n\n\n\n\nTip\n\n\n\nStopping rules specified earlier has 2 components:\n\na balance metric (for covariates) and\nrule for summarizing (across covariates).\n\n\n\n\ntwang::bal.table(mnps.AOD.ATT, \n                 digits = 2, \n                 collapse.to = \"covariate\")[,c(\"max.std.eff.sz\",\n                                               \"stop.method\")]\n\n\n\n  \n\n\nplot(mnps.AOD.ATT, plots = 3)"
+  },
+  {
+    "objectID": "cat.html#step-4-effect-estimates-from-weighted-outcome-model",
+    "href": "cat.html#step-4-effect-estimates-from-weighted-outcome-model",
+    "title": "4  Categorical exposure",
+    "section": "4.6 Step 4: Effect estimates from weighted outcome model",
+    "text": "4.6 Step 4: Effect estimates from weighted outcome model\n\nrequire(survey)\ndesign.mnps.ATT <- svydesign(ids=~1, weights=~w.ATT, data=AOD)\nfit <- svyglm(suf12 ~ treat, design = design.mnps.ATT)\nrequire(Publish)\npublish(fit, intercept = FALSE)\n#>  Variable     Units Coefficient        CI.95   p-value \n#>     treat community         Ref                        \n#>             metcbt5        0.20 [-0.00;0.41]   0.05129 \n#>                 scy        0.08 [-0.11;0.27]   0.41503"
+  },
+  {
+    "objectID": "cont.html#step-1-estimation-of-propensity-scores-via-gbm",
+    "href": "cont.html#step-1-estimation-of-propensity-scores-via-gbm",
+    "title": "5  Continuous exposure",
+    "section": "5.1 Step 1: Estimation of Propensity scores via GBM",
+    "text": "5.1 Step 1: Estimation of Propensity scores via GBM\n\ntest.mod <- ps.cont(tss_0 ~ sfs8p_0 + sati_0 + sp_sm_0 \n                    + recov_0 + subsgrps_n + treat,\n                    data=dat,\n                    n.trees = 500,\n                    shrinkage = 0.01,\n                    interaction.depth = 3,\n                    verbose = FALSE)\ntwangContinuous::bal.table(test.mod, digits = 3)"
+  },
+  {
+    "objectID": "cont.html#step-2-ipw-calculation-for-att",
+    "href": "cont.html#step-2-ipw-calculation-for-att",
+    "title": "5  Continuous exposure",
+    "section": "5.2 Step 2: IPW calculation for ATT",
+    "text": "5.2 Step 2: IPW calculation for ATT\n\ndat$wts <- twangContinuous::get.weights(test.mod) \nsummary(dat$wts)\n#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n#> 0.04231 0.85715 0.90552 0.99339 1.05425 6.31356\n# by(dat$wts, dat$tss_0, summary)"
+  },
+  {
+    "objectID": "cont.html#step-3-balance-assessment-in-weighted-data",
+    "href": "cont.html#step-3-balance-assessment-in-weighted-data",
+    "title": "5  Continuous exposure",
+    "section": "5.3 Step 3: Balance assessment in weighted data",
+    "text": "5.3 Step 3: Balance assessment in weighted data\n\n\n\n\n\n\nTip\n\n\n\nBased on absolute Pearson correlation between the exposure and each confounder\n\n\n\nbal.table(test.mod, digits = 3)\n\n\n\n  \n\n\nplot(test.mod, plots=\"es\")"
+  },
+  {
+    "objectID": "cont.html#step-4-effect-estimates-from-weighted-outcome-model",
+    "href": "cont.html#step-4-effect-estimates-from-weighted-outcome-model",
+    "title": "5  Continuous exposure",
+    "section": "5.4 Step 4: Effect estimates from weighted outcome model",
+    "text": "5.4 Step 4: Effect estimates from weighted outcome model\n\ndesign.ps <- svydesign(ids=~1, weights=~wts, data=dat) \noutcome.model <- svyglm(sfs8p_3 ~ tss_0, design = design.ps, \n                        family = gaussian())\npublish(outcome.model, intercept = FALSE, digits = 4)\n#>  Variable Units Coefficient            CI.95  p-value \n#>     tss_0            0.0026 [-0.1197;0.1249]   0.9666"
+  },
+  {
+    "objectID": "multi.html",
+    "href": "multi.html",
+    "title": "6  Multilevel modelling",
+    "section": "",
+    "text": "Relatively unexplored area of research.\n\nLi, Zaslavsky, and Landrum (2013) showed that “exploiting the multilevel structure in at least one stage can greatly reduce the bias”. They emphasize that propensity score methods offer a more robust alternative to regression adjustment, especially in complex multilevel observational data where correctly specifying the outcome model may be challenging.\nHowever, to properly estimate standard error for the treatment effect estimate from a multi-level or complex survey (where clustering and or stratification are present), it is necessary to address clustering options through outcome modelling (Austin, Jembere, and Chiu 2018).\n\n\n\n\n\n\nAustin, Peter C, Nathaniel Jembere, and Maria Chiu. 2018. “Propensity Score Matching and Complex Surveys.” Statistical Methods in Medical Research 27 (4): 1240–57.\n\n\nLi, Fan, Alan M Zaslavsky, and Mary Beth Landrum. 2013. “Propensity Score Weighting with Multilevel Data.” Statistics in Medicine 32 (19): 3373–87."
   },
   {
     "objectID": "references.html",
     "href": "references.html",
     "title": "References",
     "section": "",
-    "text": "Li, Fan, Alan M Zaslavsky, and Mary Beth Landrum. 2013.\n“Propensity Score Weighting with Multilevel Data.”\nStatistics in Medicine 32 (19): 3373–87."
+    "text": "Austin, Peter C, Nathaniel Jembere, and Maria Chiu. 2018.\n“Propensity Score Matching and Complex Surveys.”\nStatistical Methods in Medical Research 27 (4): 1240–57.\n\n\nDong, Jing, Junni L Zhang, Shuxi Zeng, and Fan Li. 2020. “Subgroup\nBalancing Propensity Score.” Statistical Methods in Medical\nResearch 29 (3): 659–76.\n\n\nLi, Fan, Alan M Zaslavsky, and Mary Beth Landrum. 2013.\n“Propensity Score Weighting with Multilevel Data.”\nStatistics in Medicine 32 (19): 3373–87.\n\n\nZeng, Shuxi, Fan Li, Rui Wang, and Fan Li. 2021. “Propensity Score\nWeighting for Covariate Adjustment in Randomized Clinical\nTrials.” Statistics in Medicine 40 (4): 842–58."
   }
 ]

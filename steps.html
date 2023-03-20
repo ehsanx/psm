@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>FAQ about Propensity Score - 2&nbsp; Steps of Propensity score Matching</title>
+<title>Discussion about Propensity Score - 2&nbsp; Steps of Propensity score Matching</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,7 +66,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
-<meta name="twitter:title" content="FAQ about Propensity Score - 2&nbsp; Steps of Propensity score Matching">
+<meta name="twitter:title" content="Discussion about Propensity Score - 2&nbsp; Steps of Propensity score Matching">
 <meta name="twitter:description" content="The followings are not exhaustive lists, but meant to show different possibilities at each step.">
 <meta name="twitter:card" content="summary">
 </head>
@@ -90,19 +90,19 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">FAQ about Propensity Score</a> 
+      <a href="./">Discussion about Propensity Score</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/ehsanx/psw" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
     <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
     <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
         <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./FAQ-about-Propensity-Score.pdf">
+          <a class="dropdown-item sidebar-tools-main-item" href="./Discussion-about-Propensity-Score.pdf">
             <i class="bi bi-bi-file-pdf pe-1"></i>
           Download PDF
           </a>
         </li>
         <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./FAQ-about-Propensity-Score.epub">
+          <a class="dropdown-item sidebar-tools-main-item" href="./Discussion-about-Propensity-Score.epub">
             <i class="bi bi-bi-journal pe-1"></i>
           Download ePub
           </a>
@@ -138,26 +138,56 @@ ul.task-list li input[type="checkbox"] {
   <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
   </div>
 </li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./overview.html" class="sidebar-item-text sidebar-link">Overview</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./goal.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Epideliologic Research Goals</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./steps.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Steps of Propensity score Matching</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./assumptions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Identifiability Conditions</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./extensions.html" class="sidebar-item-text sidebar-link">Extensions</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./extensions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Extensions</span></a>
+  <a href="./cat.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Categorical exposure</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cont.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Continuous exposure</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./multi.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Multilevel modelling</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
@@ -177,7 +207,6 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#step-3-balance-of-propensity-score-matched-dataset" id="toc-step-3-balance-of-propensity-score-matched-dataset" class="nav-link" data-scroll-target="#step-3-balance-of-propensity-score-matched-dataset"><span class="toc-section-number">2.3</span>  Step 3: Balance of Propensity score matched dataset</a></li>
   <li><a href="#step-4-treatment-effect-estimation-from-outcome-model" id="toc-step-4-treatment-effect-estimation-from-outcome-model" class="nav-link" data-scroll-target="#step-4-treatment-effect-estimation-from-outcome-model"><span class="toc-section-number">2.4</span>  Step 4: treatment effect estimation from outcome model</a></li>
   <li><a href="#reporting" id="toc-reporting" class="nav-link" data-scroll-target="#reporting"><span class="toc-section-number">2.5</span>  Reporting</a></li>
-  <li><a href="#uses-of-propensity-score-matching" id="toc-uses-of-propensity-score-matching" class="nav-link" data-scroll-target="#uses-of-propensity-score-matching"><span class="toc-section-number">2.6</span>  Uses of propensity score matching</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/ehsanx/psw/edit/main/steps.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
@@ -443,12 +472,6 @@ ZA -.-&gt; ZAA
 <ul>
 <li>We should also discuss the implications of the findings for the target population and the broader scientific literature.</li>
 </ul>
-</section>
-<section id="uses-of-propensity-score-matching" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="uses-of-propensity-score-matching"><span class="header-section-number">2.6</span> Uses of propensity score matching</h2>
-<p>Other than answering causal question in observational studies, propensity score matching can be helpful in the following scenarios:</p>
-<p><strong>Covariate adjustment in randomized trials</strong>: In some cases, propensity score matching can be applied to randomized controlled trials to adjust for potential imbalances in covariates that may arise due to randomization, especially in small sample sizes. However, there is a lot of controversy regarding covariate adjustment in RCTs.</p>
-<p><strong>Subgroup analysis</strong>: Propensity score matching can be used to conduct subgroup analysis, where the goal is to explore treatment effects within specific subgroups defined by one or more covariates.</p>
 
 
 </section>

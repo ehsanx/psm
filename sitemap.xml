@@ -2,26 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ehsank.com/index.html</loc>
-    <lastmod>2023-03-20T04:34:27.855Z</lastmod>
+    <lastmod>2023-03-20T18:01:33.808Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ehsank.com/overview.html</loc>
+    <lastmod>2023-03-20T18:02:23.925Z</lastmod>
   </url>
   <url>
     <loc>https://ehsank.com/goal.html</loc>
-    <lastmod>2023-03-20T04:34:27.855Z</lastmod>
+    <lastmod>2023-03-20T18:01:33.808Z</lastmod>
   </url>
   <url>
     <loc>https://ehsank.com/steps.html</loc>
-    <lastmod>2023-03-20T04:34:27.855Z</lastmod>
+    <lastmod>2023-03-20T18:01:33.808Z</lastmod>
   </url>
   <url>
     <loc>https://ehsank.com/assumptions.html</loc>
-    <lastmod>2023-03-20T04:34:27.860Z</lastmod>
+    <lastmod>2023-03-20T18:01:33.808Z</lastmod>
   </url>
   <url>
     <loc>https://ehsank.com/extensions.html</loc>
-    <lastmod>2023-03-20T04:34:27.860Z</lastmod>
+    <lastmod>2023-03-20T18:01:49.818Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ehsank.com/cat.html</loc>
+    <lastmod>2023-03-20T18:01:33.808Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ehsank.com/cont.html</loc>
+    <lastmod>2023-03-20T18:01:33.808Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ehsank.com/multi.html</loc>
+    <lastmod>2023-03-20T18:01:33.808Z</lastmod>
   </url>
   <url>
     <loc>https://ehsank.com/references.html</loc>
-    <lastmod>2023-03-20T04:34:27.860Z</lastmod>
+    <lastmod>2023-03-20T18:01:33.808Z</lastmod>
   </url>
 </urlset>
